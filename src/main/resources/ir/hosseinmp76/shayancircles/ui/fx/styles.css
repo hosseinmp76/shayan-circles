@@ -1,0 +1,7 @@
+.button {
+    -fx-text-fill: blue;
+}
+
+.root {
+    -fx-base: rgba(60, 63, 65, 255);
+}
