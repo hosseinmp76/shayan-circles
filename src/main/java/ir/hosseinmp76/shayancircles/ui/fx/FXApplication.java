@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-
+import ir.hosseinmp76.shayancircles.Utills;
 import ir.hosseinmp76.shayancircles.tools.AbstractTool;
 import ir.hosseinmp76.shayancircles.tools.ClasicCircleOutOfRingTool;
 import ir.hosseinmp76.shayancircles.tools.ClasicRingCircleTool;
@@ -20,6 +20,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
@@ -126,7 +127,7 @@ public class FXApplication extends Application {
 	    FXApplication.this.tool.changeColor(colorPicker.getValue());
 	});
 	final var myCanvasParentPane = new Pane();
-
+	myCanvasParentPane.setBackground(null);
 	ComboBox<ToolType> comboBox = new ComboBox();
 	comboBox.getItems().add(ToolType.ClasicCircleOutOfRingTool);
 	comboBox.getItems().add(ToolType.ClasicRingCircleTool);
@@ -199,15 +200,8 @@ public class FXApplication extends Application {
 	    final File file = fileChooser.showSaveDialog(stage);
 
 	    if (file != null) {
-		try {
-		    final WritableImage writableImage = new WritableImage(
-			    FXApplication.width, FXApplication.height);
-		    FXApplication.this.myCanvas.snapshot(null, writableImage);
-		    final RenderedImage renderedImage = SwingFXUtils
-			    .fromFXImage(writableImage, null);
-		    ImageIO.write(renderedImage, "png", file);
-		} catch (final IOException ex) {
-		}
+		Utills.savePNG(FXApplication.this.width, FXApplication.this.height,
+			myCanvas, file);
 	    }
 	});
 
@@ -245,4 +239,5 @@ public class FXApplication extends Application {
 
     }
 
+    
 }

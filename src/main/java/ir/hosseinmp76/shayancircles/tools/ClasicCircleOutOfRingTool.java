@@ -12,8 +12,7 @@ public class ClasicCircleOutOfRingTool extends ClasicRingCircleTool {
 	final var r = tool.getInnerCirleRadios();
 	final var R = tool.getOuterCirleBigRadios();
 	final double outerAngle = tool.toolState.getTraveledRadius()
-		% (2 * Math.PI * tool.getOuterCirleSmallRadios())
-		/ tool.getOuterCirleSmallRadios();
+		% (2 * Math.PI * R) / R;
 	final double innerAngle = tool.toolState.getTraveledRadius()
 		% (2 * Math.PI * r) / r;
 
@@ -34,6 +33,12 @@ public class ClasicCircleOutOfRingTool extends ClasicRingCircleTool {
 	super(outerCirleRadios, outerCirleBigRadios, innerCirleRadios,
 		penHoleDistanceToInnerCirleCenter, color);
 	// TODO Auto-generated constructor stub
+    }
+    
+
+    @Override
+    public Vector2D getPoint() {
+	return ClasicCircleOutOfRingTool.staticGetPoint(this);
     }
 
     @Override

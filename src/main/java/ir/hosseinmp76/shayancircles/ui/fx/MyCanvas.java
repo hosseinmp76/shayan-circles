@@ -30,8 +30,12 @@ public class MyCanvas extends Canvas {
 	this.tool = tool;
 	this.perSecond = perSecond;
 	this.centerOfCanvas = new Vector2D(widght / 2, height / 2);
-	var gc = this.getGraphicsContext2D();
-	gc.fillOval(0, 0, widght, height);
+	   
+//	var gc = this.getGraphicsContext2D();
+//	gc.setFill(Color.TRANSPARENT);
+//	gc.fillRect(0, 0, widght, height);
+//	gc.setFill(Color.BLACK);
+//	gc.fillOval(0, 0, widght, height);
 
     }
 
